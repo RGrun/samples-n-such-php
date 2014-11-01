@@ -61,7 +61,7 @@
 				$atStorageNow = ($row[0] == "stor") ? true : false;
 				
 				$sql = "UPDATE trays SET atnow='usr' , stor_id='0' , site_id='0' WHERE tray_id='$currentTray'";
-				echo $sql;
+				//echo $sql;
 				$worker->query($sql);
 				//this is the mechanism for completing assignments. If the tray is being picked up from a site,
 				//the related assignment is marked as "complete". The user picking up the tray is then responsible for returning
