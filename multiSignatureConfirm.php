@@ -4,8 +4,8 @@
 	//This page is like the signature page from the single tray pickup, only for multi-select mode
 	//The signature is given here on a pickup
 
-	require_once $_SERVER['DOCUMENT_ROOT'] . "/athena/www/utils/htmlUtils.php";
-	require_once $_SERVER['DOCUMENT_ROOT'] . "/athena/www/utils/dbWorker.php";
+	require_once $_SERVER['DOCUMENT_ROOT'] . "htmlUtils.php";
+	require_once $_SERVER['DOCUMENT_ROOT'] . "dbWorker.php";
 	
 	
 	$htmlUtils = new htmlUtils();
