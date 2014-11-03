@@ -4,8 +4,8 @@
 	//this script is to allow users to add new cases to the database. It's nearly identical to the admin version, though options are stripped down a bit
 	//this script only allows users to add new cases to thier own team
 	
-	require_once $_SERVER['DOCUMENT_ROOT'] . "/athena/www/utils/htmlUtils.php";
-	require_once $_SERVER['DOCUMENT_ROOT'] . "/athena/www/utils/dbWorker.php";
+	require_once "htmlUtils.php";
+	require_once "dbWorker.php";
 	
 	$htmlUtils = new htmlUtils();
 	$worker = new dbWorker();
@@ -21,8 +21,6 @@
 	
 		extract($_POST);
 		
-		//print_r($_POST);
-		
 		if($newComment == null) $newComment = "";
 		
 		$unixTime = $unixTimeDO = mktime($newHour, $newMin, 0, $newMonth, $newDay, $newYear);
@@ -32,8 +30,6 @@
 		
 		$sql = "INSERT INTO cases (team_id, doc_id, proc_id, site_id, status, dttm, cmt)" .
 		"VALUES ('$newteams', '$newdoctors', '$newprocs', '$newsites', '$newStatus', '$date', '$newComment')";
-
-		//echo $sql;
 		
 		$worker->query($sql);
 		

@@ -16,8 +16,6 @@
 	$userId = $_SESSION['userId'];
 	$teamId = $_SESSION['teamId'];
 	
-	//$trayDB = $_SESSION['tray'];
-	//print_r($trayDB);
 	
 	if(isset($_SESSION['storage'])) {
 		$destIsStorage = true;
@@ -61,7 +59,7 @@
 				$atStorageNow = ($row[0] == "stor") ? true : false;
 				
 				$sql = "UPDATE trays SET atnow='usr' , stor_id='0' , site_id='0' WHERE tray_id='$currentTray'";
-				//echo $sql;
+
 				$worker->query($sql);
 				//this is the mechanism for completing assignments. If the tray is being picked up from a site,
 				//the related assignment is marked as "complete". The user picking up the tray is then responsible for returning
@@ -99,7 +97,7 @@
 			$currentTime = date("Y-m-d H:i:s", $currentTime);
 			$sql = "INSERT INTO h_traystor (tray_id, stor_id, usr_id, dttm) VALUES ('$currentTray', '$storId', '$userId', '$currentTime')";
 			$worker->query($sql);
-			//echo $sql;
+
 			
 			$tray = $worker->findTray($currentTray, "name");
 			$user = $worker->findUser($userId, "uname");
@@ -129,7 +127,7 @@
 				//system assumes closest do_dttm is the current case
 				$row = mysqli_fetch_array($result);
 				$sql = "INSERT INTO traytrans (tray_id, signer, site_id, from_usr, to_usr, case_id, dttm) VALUES ('$currentTray', '$name','$siteId', '$userId', '$row[1]', '$row[0]', '$time')";
-				//echo $sql;
+
 				$worker->query($sql);
 				
 				$tray = $worker->findTray($currentTray, "name");
